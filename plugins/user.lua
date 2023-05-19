@@ -9,4 +9,10 @@ return {
   --     require("lsp_signature").setup()
   --   end,
   -- },
+  {
+    "Djancyp/custom-theme.nvim",
+    config = function()
+        require("custom-theme").setup()
+    end,
+  },
 }
