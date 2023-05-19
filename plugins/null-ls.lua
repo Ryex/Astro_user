@@ -23,8 +23,6 @@ return {
       null_ls.builtins.diagnostics.luacheck,
       null_ls.builtins.diagnostics.flake8,
       -- null_ls.builtins.diagnostics.pylint,
-      null_ls.builtins.diagnostics.pyright,
-      null_ls.builtins.diagnostics.pyre
     }
     config.on_attach = function(client, bufnr)
       -- your usual configuration — options, keymaps, etc
