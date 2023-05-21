@@ -2,7 +2,7 @@ return {
   {
     "nvim-treesitter/nvim-treesitter",
     opts = {
-      ensure_installed = { "lua", "cpp", "python", "rust" },
+      ensure_installed = { "lua", "cpp", "python", "rust", "comment", "toml", "json", "cmake" },
     },
   },
   {
@@ -10,3 +10,4 @@ return {
     cmd = { "TSPlaygroundToggle", "TSHighlightCapturesUnderCursor" },
   },
 }
+
