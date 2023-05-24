@@ -20,6 +20,18 @@ return {
   },
   -- Set colorscheme to use
   colorscheme = "astrodark",
+  mappings = {
+    n = {
+      ["<leader>c"] = {
+        function()
+          local bufs = vim.fn.getbufinfo { buflisted = true }
+          require("astronvim.utils.buffer").close(0)
+          if require("astronvim.utils").is_available "alpha-nvim" and not bufs[2] then require("alpha").start(true) end
+        end,
+        desc = "Close buffer",
+      },
+    },
+  },
   -- Diagnostics configuration (for vim.diagnostics.config({...})) when diagnostics are on
   diagnostics = { virtual_text = true, underline = true },
   lsp = {
@@ -113,8 +125,7 @@ return {
     require("vim.lsp.log").set_format_func(vim.inspect)
 
     -- Neovide GUI settings
-    vim.o.guifont = "FiraCode Nerd Font Mono:h8" -- text below applies for VimScript
-    vim.o.guifont = "Hack:h9:#e-subpixelantialias:#h-none"
+    vim.o.guifont = "Fira Code:h8"
     
     vim.opt.linespace = 0
     vim.g.neovide_scale_factor = 1.0
