@@ -27,7 +27,11 @@ return {
     config.on_attach = function(client, bufnr)
       -- your usual configuration — options, keymaps, etc
       -- ...
-    
+      if client.name == "codespell" then
+        client.resolved_capabilities.document_formatting = false -- 0.7 and earlier
+        client.server_capabilities.documentFormattingProvider = false -- 0.8 and later
+      end
+
       local lsp_format_modifications = require("lsp-format-modifications")
       lsp_format_modifications.attach(client, bufnr, { format_on_save = false })
     end

@@ -244,7 +244,7 @@ return {
       end
 
       require("diffview").setup {
-        view = { merge_tool = { layout = "diff3_mixed" } },
+        view = { merge_tool = { layout = "diff4_mixed" } },
         keymaps = {
           disable_defaults = true,
           view = build_keymaps {
