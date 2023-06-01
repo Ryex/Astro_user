@@ -105,14 +105,24 @@ return {
     -- }
     
     local map = vim.api.nvim_set_keymap
-    local unmap = vim.api.nvim_del_keymap    -- Allow gf to work for non-existing files
+    local unmap = vim.api.nvim_del_keymap    
+
+    -- Allow gf to work for non-existing files
     map("n", "gf", ":edit <cfile><cr>", { desc = "Edit file" })
     map("v", "gf", ":edit <cfile><cr>", { desc = "Edit file" })
     map("o", "gf", ":edit <cfile><cr>", { desc = "Edit file" })
 
     map("n", "<f8>", ":cprev<cr>", { desc = "Previous item in quickfix list" })
     map("n", "<f9>", ":cnext<cr>", { desc = "Next item in quickfix list" })
-    map("n", "<leader>qf", ":lua hu_toggle_qf()<cr>", { desc = "Toggle quickfix list" })
+
+    -- system clipboard ctrl+c. ctrl+v
+    map("n", "<c-c>", '"+y', { desc = "yank to system clipboard" })
+    map("v", "<c-c>", '"+y', { desc = "yank to system clipboard" })
+    map("n", "<c-v>", '"+p', { desc = "paste form system clipboard" })
+    
+    map("c", "<c-v>", "<c-r>+", { noremap = true, desc = "Paste system clipboard (Command mode)" })
+    map("i", "<c-v>", "<c-r>+", { noremap = true, desc = "Paste system clipboard (insert mode)" })
+
 
     vim.api.nvim_create_augroup("slint_auto", { clear = true })
     vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
