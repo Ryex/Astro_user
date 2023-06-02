@@ -3,16 +3,16 @@ require "user.reload"
 return {
   -- Configure AstroNvim updates
   updater = {
-    remote = "origin", -- remote to use
-    channel = "stable", -- "stable" or "nightly"
-    version = "latest", -- "latest", tag name, or regex search like "v1.*" to only do updates before v2 (STABLE ONLY)
-    branch = "nightly", -- branch name (NIGHTLY ONLY)
-    commit = nil, -- commit hash (NIGHTLY ONLY)
-    pin_plugins = nil, -- nil, true, false (nil will pin plugins on stable only)
-    skip_prompts = false, -- skip prompts about breaking changes
+    remote = "origin",     -- remote to use
+    channel = "stable",    -- "stable" or "nightly"
+    version = "latest",    -- "latest", tag name, or regex search like "v1.*" to only do updates before v2 (STABLE ONLY)
+    branch = "nightly",    -- branch name (NIGHTLY ONLY)
+    commit = nil,          -- commit hash (NIGHTLY ONLY)
+    pin_plugins = nil,     -- nil, true, false (nil will pin plugins on stable only)
+    skip_prompts = false,  -- skip prompts about breaking changes
     show_changelog = true, -- show the changelog after performing an update
-    auto_quit = false, -- automatically quit the current session after a successful update
-    remotes = { -- easily add new remotes to track
+    auto_quit = false,     -- automatically quit the current session after a successful update
+    remotes = {            -- easily add new remotes to track
       --   ["remote_name"] = "https://remote_url.come/repo.git", -- full remote url
       --   ["remote2"] = "github_user/repo", -- GitHub user/repo shortcut,
       --   ["remote3"] = "github_user", -- GitHub user assume AstroNvim fork
@@ -39,7 +39,7 @@ return {
     formatting = {
       -- control auto formatting on save
       format_on_save = {
-        enabled = false, -- enable or disable format on save globally
+        enabled = false,    -- enable or disable format on save globally
         allow_filetypes = { -- enable format on save for specified filetypes only
           -- "go",
           "json",
@@ -103,9 +103,9 @@ return {
     --     ["~/%.config/foo/.*"] = "fooscript",
     --   },
     -- }
-    
+
     local map = vim.api.nvim_set_keymap
-    local unmap = vim.api.nvim_del_keymap    
+    local unmap = vim.api.nvim_del_keymap
 
     -- Allow gf to work for non-existing files
     map("n", "gf", ":edit <cfile><cr>", { desc = "Edit file" })
@@ -119,7 +119,7 @@ return {
     map("n", "<c-c>", '"+y', { desc = "yank to system clipboard" })
     map("v", "<c-c>", '"+y', { desc = "yank to system clipboard" })
     map("n", "<c-v>", '"+p', { desc = "paste form system clipboard" })
-    
+
     map("c", "<c-v>", "<c-r>+", { noremap = true, desc = "Paste system clipboard (Command mode)" })
     map("i", "<c-v>", "<c-r>+", { noremap = true, desc = "Paste system clipboard (insert mode)" })
 
@@ -135,8 +135,8 @@ return {
     require("vim.lsp.log").set_format_func(vim.inspect)
 
     -- Neovide GUI settings
-    vim.o.guifont = "Fira Code:h8"
-    
+    vim.o.guifont = "FiraCode Nerd Font:h8"
+
     vim.opt.linespace = 0
     vim.g.neovide_scale_factor = 1.0
     vim.g.neovide_padding_top = 0
@@ -159,14 +159,14 @@ return {
     vim.g.neovide_hide_mouse_when_typing = true
 
     vim.g.neovide_underline_automatic_scaling = false
-    
+
     vim.g.neovide_refresh_rate = 60
     vim.g.neovide_refresh_rate_idle = 5
     vim.g.neovide_no_idle = false
 
     -- vim.g.neovide_cursor_animation_length = 0.13
     vim.g.neovide_cursor_animation_length = 0 -- disable
-    
+
     vim.g.neovide_cursor_trail_size = 0.8
     vim.g.neovide_cursor_antialiasing = true
     vim.g.neovide_cursor_animate_in_normal_mode = false
