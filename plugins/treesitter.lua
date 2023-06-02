@@ -10,8 +10,9 @@ return {
     },
     opts = {
       ensure_installed = {
-        "lua", "cpp", "python", "rust", "comment", "toml", "json", "cmake", "git_config",
-        "git_rebase", "gitattributes", "gitcommit", "gitignore", "diff"
+        "lua", "luadoc", "cpp", "python", "rust", "comment", "toml", "json", "cmake", "git_config",
+        "git_rebase", "gitattributes", "gitcommit", "gitignore", "diff", "yaml", "markdown",
+        "markdown_inline", "regex", "go", "gomod", "gosum"
       },
       matchup = {
         enable = true,
