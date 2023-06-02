@@ -9,15 +9,18 @@ return {
       },
     },
     opts = {
-      ensure_installed = { "lua", "cpp", "python", "rust", "comment", "toml", "json", "cmake" },
+      ensure_installed = {
+        "lua", "cpp", "python", "rust", "comment", "toml", "json", "cmake", "git_config",
+        "git_rebase", "gitattributes", "gitcommit", "gitignore", "diff"
+      },
       matchup = {
         enable = true,
       },
       highlight = {
-        disable = {  },
+        disable = {},
         additional_vim_regex_highlighting = true,
       },
-      indent = { enable = true, disable = { } },
+      indent = { enable = true, disable = {} },
       incremental_selection = { enable = true },
       rainbow = { enable = true },
       textobjects = {
@@ -111,4 +114,3 @@ return {
     cmd = { "TSPlaygroundToggle", "TSHighlightCapturesUnderCursor" },
   },
 }
-
