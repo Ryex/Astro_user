@@ -12,7 +12,7 @@ return {
   },
   {
     "phaazon/hop.nvim",
-    branch = "v1", -- optional but strongly recommended
+    branch = "v2", -- optional but strongly recommended
     event = "BufRead",
     config = function() require("hop").setup() end,
   },

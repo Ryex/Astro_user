@@ -122,6 +122,23 @@ return {
     map("c", "<c-v>", "<c-r>+", { noremap = true, desc = "Paste system clipboard (Command mode)" })
     map("i", "<c-v>", "<c-r>+", { noremap = true, desc = "Paste system clipboard (insert mode)" })
 
+    local hop = require('hop')
+    if (hop) then
+      local directions = require('hop.hint').HintDirection
+      vim.keymap.set('', 'f', function()
+        hop.hint_char1({ direction = directions.AFTER_CURSOR, current_line_only = true })
+      end, {remap=true})
+      vim.keymap.set('', 'F', function()
+        hop.hint_char1({ direction = directions.BEFORE_CURSOR, current_line_only = true })
+      end, {remap=true})
+      vim.keymap.set('', 't', function()
+        hop.hint_char1({ direction = directions.AFTER_CURSOR, current_line_only = true, hint_offset = -1 })
+      end, {remap=true})
+      vim.keymap.set('', 'T', function()
+        hop.hint_char1({ direction = directions.BEFORE_CURSOR, current_line_only = true, hint_offset = 1 })
+      end, {remap=true})
+    end
+
     vim.api.nvim_create_augroup("slint_auto", { clear = true })
     vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
       group = "slint_auto",
