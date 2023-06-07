@@ -12,7 +12,8 @@ return {
       ensure_installed = {
         "lua", "luadoc", "cpp", "python", "rust", "comment", "toml", "json", "cmake", "git_config",
         "git_rebase", "gitattributes", "gitcommit", "gitignore", "diff", "yaml", "markdown",
-        "markdown_inline", "regex", "go", "gomod", "gosum"
+        "markdown_inline", "regex", "go", "gomod", "gosum", "typescript", "javascript", "http",
+        "css"
       },
       matchup = {
         enable = true,
