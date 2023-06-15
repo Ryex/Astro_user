@@ -13,4 +13,9 @@ return {
     "Djancyp/custom-theme.nvim",
     config = function() require("custom-theme").setup() end,
   },
+  {
+    "mg979/vim-visual-multi",
+    lazy = false,
+  },
+
 }
