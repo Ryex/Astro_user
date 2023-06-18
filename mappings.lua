@@ -42,6 +42,32 @@ end
 -- automatically pick-up stored data by this setting.)
 return {
   -- first key is the mode
+  [""] = { -- normal and visual mode
+    ["f"] = {
+      function() require('hop').hint_words({ current_line_only = true }) end,
+      desc = "Hop words on current line",
+    },
+    ["F"] = {
+      function() require('hop').hint_words({ current_line_only = false }) end,
+      desc = "Hop words",
+    },
+    ["t"] = {
+      function() require('hop').hint_char2({ current_line_only = true }) end,
+      desc = "Hop characters on current line",
+    },
+    ["T"] = {
+      function() require('hop').hint_char2({ current_line_only = false }) end,
+      desc = "Hop characters",
+    },
+    [";"] = {
+      function() require('hop').hint_lines_skip_whitespace() end,
+      desc = "Hop lines start",
+    },
+    ["?"] = {
+      function() require('hop').hint_patterns() end,
+      desc = "Hop patterns",
+    },
+  },
   n = {
     -- second key is the lefthand side of the map
     -- mappings seen under group name "Buffer"
