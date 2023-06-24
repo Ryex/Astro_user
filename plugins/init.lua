@@ -51,6 +51,9 @@ return {
     end,
   },
   {
+    "p00f/clangd_extensions.nvim",
+  },
+  {
     "Saecki/crates.nvim",
     after = "nvim-cmp",
     config = function()
