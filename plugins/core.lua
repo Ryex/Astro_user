@@ -74,4 +74,5 @@ return {
   --     }, { mode = "n", prefix = "<leader>" })
   --   end,
   -- },
+  { "mfussenegger/nvim-dap", enabled = true },
 }

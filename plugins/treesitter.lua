@@ -7,6 +7,7 @@ return {
         "andymass/vim-matchup",
         init = function() vim.g.matchup_matchparen_deferred = 1 end,
       },
+      "ChristianChiarulli/nvim-ts-rainbow"
     },
     opts = {
       auto_install = vim.fn.executable "tree-sitter" == 1,
