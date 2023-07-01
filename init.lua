@@ -6,7 +6,7 @@ if vim.fn.has "win32" then
   if res ~= "" then
     print "Setting Dev env vars from vsdevcmd.bat"
     local vsdevcmd_path = res:gsub("^%s*(.-)%s*$", "%1") .. "\\Common7\\Tools\\vsdevcmd.bat"
-    local vsdev_res = vim.fn.system { vim.env.comspec, "/C", '"' .. vsdevcmd_path .. '"' .. " -no_logo && set" }
+    local vsdev_res = vim.fn.system { vim.env.comspec, "/C", '"' .. vsdevcmd_path .. '"' .. " -no_logo -arch=x64 -host_arch=x64 && set" }
     for line in vsdev_res:gmatch "[^\n\r]+" do
       local s, e = string.find(line, "=", 0, true)
       if s ~= nil then
