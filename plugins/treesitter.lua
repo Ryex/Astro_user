@@ -7,15 +7,37 @@ return {
         "andymass/vim-matchup",
         init = function() vim.g.matchup_matchparen_deferred = 1 end,
       },
-      "ChristianChiarulli/nvim-ts-rainbow"
+      "ChristianChiarulli/nvim-ts-rainbow",
     },
     opts = {
       auto_install = vim.fn.executable "tree-sitter" == 1,
       ensure_installed = {
-        "lua", "luadoc", "cpp", "python", "rust", "comment", "toml", "json", "cmake", "git_config",
-        "git_rebase", "gitattributes", "gitcommit", "gitignore", "diff", "yaml", "markdown",
-        "markdown_inline", "regex", "go", "gomod", "gosum", "typescript", "javascript", "http",
-        "css"
+        "lua",
+        "luadoc",
+        "cpp",
+        "python",
+        "rust",
+        "comment",
+        "toml",
+        "json",
+        "cmake",
+        "git_config",
+        "git_rebase",
+        "gitattributes",
+        "gitcommit",
+        "gitignore",
+        "diff",
+        "yaml",
+        "markdown",
+        "markdown_inline",
+        "regex",
+        "go",
+        "gomod",
+        "gosum",
+        "typescript",
+        "javascript",
+        "http",
+        "css",
       },
 
       matchup = {
@@ -165,4 +187,10 @@ return {
   --   end,
   -- },
   { "nvim-treesitter/nvim-treesitter-textobjects", after = "nvim-treesitter" },
+  {
+    "LhKipp/nvim-nu",
+    lazy = false,
+    ft = "nu",
+    config = function() require("nu").setup() end,
+  },
 }

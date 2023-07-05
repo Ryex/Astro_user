@@ -18,7 +18,7 @@ if vim.fn.has "win32" then
   end
 
   local powershell_options = {
-    shell = vim.fn.executable "pwsh" == 1 and "pwsh" or "powershell",
+    shell = vim.fn.executable "nu" == 1 and "nu" or vim.fn.executable "pwsh" == 1 and "pwsh" or "powershell",
     shellcmdflag =
     "-NoLogo -NoProfile -ExecutionPolicy RemoteSigned -Command [Console]::InputEncoding=[Console]::OutputEncoding=[System.Text.Encoding]::UTF8;",
     shellredir = "-RedirectStandardOutput %s -NoNewWindow -Wait",
