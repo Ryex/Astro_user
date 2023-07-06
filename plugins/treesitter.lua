@@ -197,6 +197,20 @@ return {
     lazy = false,
     config = function()
       local rainbow_delimiters = require "rainbow-delimiters"
+
+      local api = vim.api
+      local set_hl = api.nvim_set_hl
+
+      -- pulled from astrodark colors
+      local _ = {{{{{{{{{{{{}}}}}}}}}}}}
+      set_hl(0, "MyRainbowDelimiterRed", { default = true, fg = "#e06c75", ctermfg = "Red" })
+      set_hl(0, "MyRainbowDelimiterOrange", { default = true, fg = "#d19a66", ctermfg = "White" })
+      set_hl(0, "MyRainbowDelimiterYellow", { default = true, fg = "#e5c06b", ctermfg = "Yellow" })
+      set_hl(0, "MyRainbowDelimiterGreen", { default = true, fg = "#98c379", ctermfg = "Green" })
+      set_hl(0, "MyRainbowDelimiterCyan", { default = true, fg = "#56b6c2", ctermfg = "Cyan" })
+      set_hl(0, "MyRainbowDelimiterBlue", { default = true, fg = "#61afef", ctermfg = "Blue" })
+      set_hl(0, "MyRainbowDelimiterViolet", { default = true, fg = "#c678dd", ctermfg = "Magenta" })
+
       vim.g.rainbow_delimiters = {
         strategy = {
           [""] = rainbow_delimiters.strategy["global"],
@@ -204,16 +218,16 @@ return {
         },
         query = {
           [""] = "rainbow-delimiters",
-          lua = "rainbow-blocks",
+          lua = "rainbow-delimiters",
         },
         highlight = {
-          "RainbowDelimiterRed",
-          "RainbowDelimiterYellow",
-          "RainbowDelimiterBlue",
-          "RainbowDelimiterOrange",
-          "RainbowDelimiterGreen",
-          "RainbowDelimiterViolet",
-          "RainbowDelimiterCyan",
+          "MyRainbowDelimiterRed",
+          "MyRainbowDelimiterYellow",
+          "MyRainbowDelimiterBlue",
+          "MyRainbowDelimiterOrange",
+          "MyRainbowDelimiterGreen",
+          "MyRainbowDelimiterViolet",
+          "MyRainbowDelimiterCyan",
         },
       }
     end,
