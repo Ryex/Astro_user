@@ -1,6 +1,6 @@
 require "user.reload"
 
-if vim.fn.has "win32" then
+if vim.fn.has "win32" == 1 then
   -- run, capture, setenv from vsdevcmd
   local res = vim.fn.system { "vswhere", "-latest", "-property", "installationPath" }
   if res ~= "" then
