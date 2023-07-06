@@ -7,7 +7,6 @@ return {
         "andymass/vim-matchup",
         init = function() vim.g.matchup_matchparen_deferred = 1 end,
       },
-      "ChristianChiarulli/nvim-ts-rainbow",
     },
     opts = {
       auto_install = vim.fn.executable "tree-sitter" == 1,
@@ -192,5 +191,31 @@ return {
     lazy = false,
     ft = "nu",
     config = function() require("nu").setup() end,
+  },
+  {
+    "HiPhish/rainbow-delimiters.nvim",
+    lazy = false,
+    config = function()
+      local rainbow_delimiters = require "rainbow-delimiters"
+      vim.g.rainbow_delimiters = {
+        strategy = {
+          [""] = rainbow_delimiters.strategy["global"],
+          commonlisp = rainbow_delimiters.strategy["local"],
+        },
+        query = {
+          [""] = "rainbow-delimiters",
+          lua = "rainbow-blocks",
+        },
+        highlight = {
+          "RainbowDelimiterRed",
+          "RainbowDelimiterYellow",
+          "RainbowDelimiterBlue",
+          "RainbowDelimiterOrange",
+          "RainbowDelimiterGreen",
+          "RainbowDelimiterViolet",
+          "RainbowDelimiterCyan",
+        },
+      }
+    end,
   },
 }
