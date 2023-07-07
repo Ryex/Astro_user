@@ -28,11 +28,41 @@ function _G.dapRunConfigWithArgs()
       prompt = mConfig.name .. " - with args: ",
     }, function(input)
       if input == nil then return end
-      local args = vim.split(input, " ", { trimempty = true })
-      mConfig.args = args
-      dap.run(mConfig)
+      local args, err = _G.splitLaunchArgs(input)
+      if err ~= nil then
+        vim.notify(err, vim.log.levels.ERROR, {
+              title = "Arguments Error"
+            })
+      else
+        mConfig.args = args
+        dap.run(mConfig)
+      end
     end)
   end)
+end
+
+function _G.splitLaunchArgs(input)
+  local args = {}
+  local start_pat, end_pat, buf, quoted = [=[^(['"])]=], [=[(['"])$]=], nil, nil
+  for str in input:gmatch("%S+") do
+    local start_quoted = str:match(start_pat)
+    local end_quoted = str:match(end_pat)
+    local escaped = str:match([=[(\*)['"]$]=])
+    if start_quoted and not quoted and not end_quoted then
+      buf, quoted = str, start_quoted
+    elseif buf and end_quoted == quoted and #escaped % 2 == 0 then
+      str, buf, quoted = buf .. ' ' .. str, nil, nil
+    elseif buf then
+      buf = buf .. ' ' .. str
+    end
+    if not buf then
+      args[#args+1] = str:gsub(start_pat, ""):gsub(end_pat, "")
+    end
+  end
+  if buf then
+    return args, "Mismatched quote for " .. buf
+  end
+  return args, nil
 end
 
 -- Mapping data with "desc" stored directly by vim.keymap.set().
