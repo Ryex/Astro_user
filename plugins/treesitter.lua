@@ -194,7 +194,7 @@ return {
   },
   {
     "HiPhish/rainbow-delimiters.nvim",
-    lazy = false,
+    event = "User AstroFile",
     config = function()
       local rainbow_delimiters = require "rainbow-delimiters"
 
@@ -202,7 +202,7 @@ return {
       local set_hl = api.nvim_set_hl
 
       -- pulled from astrodark colors
-      local _ = {{{{{{{{{{{{}}}}}}}}}}}}
+      local _ = { { { { { { { { { { { {} } } } } } } } } } } }
       set_hl(0, "MyRainbowDelimiterRed", { default = true, fg = "#e06c75", ctermfg = "Red" })
       set_hl(0, "MyRainbowDelimiterOrange", { default = true, fg = "#d19a66", ctermfg = "White" })
       set_hl(0, "MyRainbowDelimiterYellow", { default = true, fg = "#e5c06b", ctermfg = "Yellow" })
@@ -231,5 +231,10 @@ return {
         },
       }
     end,
+  },
+  {
+    "bennypowers/nvim-regexplainer",
+    opts = {},
+    ft = { "html", "javascript", "javascriptreact", "typescript", "typescriptreact", "python", "rust", "lua", "ruby" },
   },
 }

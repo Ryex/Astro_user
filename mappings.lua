@@ -31,8 +31,8 @@ function _G.dapRunConfigWithArgs()
       local args, err = _G.splitLaunchArgs(input)
       if err ~= nil then
         vim.notify(err, vim.log.levels.ERROR, {
-              title = "Arguments Error"
-            })
+          title = "Arguments Error",
+        })
       else
         mConfig.args = args
         dap.run(mConfig)
@@ -44,24 +44,20 @@ end
 function _G.splitLaunchArgs(input)
   local args = {}
   local start_pat, end_pat, buf, quoted = [=[^(['"])]=], [=[(['"])$]=], nil, nil
-  for str in input:gmatch("%S+") do
+  for str in input:gmatch "%S+" do
     local start_quoted = str:match(start_pat)
     local end_quoted = str:match(end_pat)
-    local escaped = str:match([=[(\*)['"]$]=])
+    local escaped = str:match [=[(\*)['"]$]=]
     if start_quoted and not quoted and not end_quoted then
       buf, quoted = str, start_quoted
     elseif buf and end_quoted == quoted and #escaped % 2 == 0 then
-      str, buf, quoted = buf .. ' ' .. str, nil, nil
+      str, buf, quoted = buf .. " " .. str, nil, nil
     elseif buf then
-      buf = buf .. ' ' .. str
+      buf = buf .. " " .. str
     end
-    if not buf then
-      args[#args+1] = str:gsub(start_pat, ""):gsub(end_pat, "")
-    end
+    if not buf then args[#args + 1] = str:gsub(start_pat, ""):gsub(end_pat, "") end
   end
-  if buf then
-    return args, "Mismatched quote for " .. buf
-  end
+  if buf then return args, "Mismatched quote for " .. buf end
   return args, nil
 end
 
@@ -74,31 +70,39 @@ return {
   -- first key is the mode
   [""] = { -- normal and visual mode
     ["f"] = {
-      function() require('hop').hint_words({ current_line_only = true }) end,
+      function() require("hop").hint_words { current_line_only = true } end,
       desc = "Hop words on current line",
     },
     ["F"] = {
-      function() require('hop').hint_words({ current_line_only = false }) end,
+      function() require("hop").hint_words { current_line_only = false } end,
       desc = "Hop words",
     },
     ["t"] = {
-      function() require('hop').hint_char2({ current_line_only = true }) end,
+      function() require("hop").hint_char2 { current_line_only = true } end,
       desc = "Hop characters on current line",
     },
     ["T"] = {
-      function() require('hop').hint_char2({ current_line_only = false }) end,
+      function() require("hop").hint_char2 { current_line_only = false } end,
       desc = "Hop characters",
     },
     [";"] = {
-      function() require('hop').hint_lines_skip_whitespace() end,
+      function() require("hop").hint_lines_skip_whitespace() end,
       desc = "Hop lines start",
     },
     ["?"] = {
-      function() require('hop').hint_patterns() end,
+      function() require("hop").hint_patterns() end,
       desc = "Hop patterns",
     },
   },
   n = {
+    ["<leader>c"] = {
+      function()
+        local bufs = vim.fn.getbufinfo { buflisted = true }
+        require("astronvim.utils.buffer").close(0)
+        if require("astronvim.utils").is_available "alpha-nvim" and not bufs[2] then require("alpha").start(true) end
+      end,
+      desc = "Close buffer",
+    },
     -- second key is the lefthand side of the map
     -- mappings seen under group name "Buffer"
     ["<leader>bn"] = { "<cmd>tabnew<cr>", desc = "New tab" },
