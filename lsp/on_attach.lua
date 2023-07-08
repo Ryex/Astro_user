@@ -1,5 +1,4 @@
 return function(client, bufnr)
-  
   -- toggle inlay hints
   if client.server_capabilities.inlayHintProvider then
     local inlayhints_avail, inlayhints = pcall(require, "lsp-inlayhints")

@@ -1,4 +1,19 @@
 return {
+  {
+    "olimorris/onedarkpro.nvim",
+    priority = 1000, -- Ensure it loads first
+    opts = {
+      options = {
+        highlight_inactive_windows = true,
+      },
+    },
+  },
+  {
+    "mvllow/modes.nvim",
+    version = "^0.2",
+    event = "VeryLazy",
+    opts = {},
+  },
   -- You can also add new plugins here as well:
   -- Add plugins, the lazy syntax
   -- "andweeb/presence.nvim",
@@ -128,7 +143,39 @@ return {
   {
     "Pocco81/auto-save.nvim",
     event = { "User AstroFile", "InsertEnter" },
-    opts = {},
+    opts = {
+      enabled = false, -- start auto-save when the plugin is loaded (i.e. when your package manager loads it)
+      execution_message = {
+        message = function() -- message to print on save
+          return ("AutoSave: saved at " .. vim.fn.strftime "%H:%M:%S")
+        end,
+        dim = 0.18, -- dim the color of `message`
+        cleaning_interval = 1250, -- (milliseconds) automatically clean MsgArea after displaying `message`. See :h MsgArea
+      },
+      trigger_events = { "InsertLeave", "TextChanged" }, -- vim events that trigger auto-save. See :h events
+      -- function that determines whether to save the current buffer or not
+      -- return true: if buffer is ok to be saved
+      -- return false: if it's not ok to be saved
+      condition = function(buf)
+        local fn = vim.fn
+        local utils = require "auto-save.utils.data"
+
+        if fn.getbufvar(buf, "&modifiable") == 1 and utils.not_in(fn.getbufvar(buf, "&filetype"), {}) then
+          return true -- met condition(s), can save
+        end
+        return false -- can't save
+      end,
+      write_all_buffers = false, -- write all buffers when the current one meets `condition`
+      debounce_delay = 5000, -- saves the file at most every `debounce_delay` milliseconds
+      callbacks = {
+        -- functions to be executed at different intervals
+        enabling = nil, -- ran when enabling auto-save
+        disabling = nil, -- ran when disabling auto-save
+        before_asserting_save = nil, -- ran before checking `condition`
+        before_saving = nil, -- ran before doing the actual save
+        after_saving = nil, -- ran after doing the actual save
+      },
+    },
   },
   {
     "lambdalisue/suda.vim",
@@ -153,5 +200,22 @@ return {
     "m4xshen/smartcolumn.nvim",
     event = { "InsertEnter", "User AstroFile" },
     opts = {},
+  },
+  {
+    "johmsalas/text-case.nvim",
+    event = "User AstroFile",
+    opts = {},
+    config = function()
+      require("textcase").setup {}
+      require("telescope").load_extension "textcase"
+      vim.api.nvim_set_keymap("n", "ga.", "<cmd>TextCaseOpenTelescope<CR>", { desc = "Telescope" })
+      vim.api.nvim_set_keymap("v", "ga.", "<cmd>TextCaseOpenTelescope<CR>", { desc = "Telescope" })
+    end,
+  },
+  {
+    "linux-cultist/venv-selector.nvim",
+    ft = { "python" },
+    opts = {},
+    keys = { { "<leader>lv", "<cmd>:VenvSelect<cr>", desc = "Select VirtualEnv" } },
   },
 }
