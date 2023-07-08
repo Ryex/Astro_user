@@ -84,37 +84,52 @@ return {
             compare.order,
           },
         },
-        mapping = {
-          -- tab complete
-          ["<Tab>"] = cmp.mapping(function(fallback)
-            if cmp.visible() and has_words_before() then
-              cmp.confirm { select = true }
-            elseif luasnip.jumpable(1) then
-              luasnip.jump(1)
-            else
-              fallback()
-            end
-          end, { "i", "s" }),
-          -- <C-n> and <C-p> for navigating snippets
-          ["<C-p>"] = cmp.mapping.select_prev_item { behavior = cmp.SelectBehavior.Select },
-          ["<C-n>"] = cmp.mapping.select_next_item { behavior = cmp.SelectBehavior.Select },
-          -- <C-j> for starting completion
-          ["<A-j>"] = cmp.mapping(function()
-            if cmp.visible() then
-              cmp.select_next_item { behavior = cmp.SelectBehavior.Insert }
-            else
-              cmp.complete()
-            end
-          end, { "i", "s" }),
-        },
+        -- mapping = {
+        --   -- tab complete
+        --   ["<Tab>"] = cmp.mapping(function(fallback)
+        --     if cmp.visible() then
+        --       cmp.select_next_item()
+        --       -- You could replace the expand_or_jumpable() calls with expand_or_locally_jumpable()
+        --       -- they way you will only jump inside the snippet region
+        --     elseif luasnip.expand_or_jumpable() then
+        --       luasnip.expand_or_jump()
+        --     elseif has_words_before() then
+        --       cmp.complete()
+        --     else
+        --       fallback()
+        --     end
+        --   end, { "i", "s" }),
+        --   -- <C-n> and <C-p> for navigating snippets
+        --   ["<C-p>"] = cmp.mapping.select_prev_item { behavior = cmp.SelectBehavior.Select },
+        --   ["<C-n>"] = cmp.mapping.select_next_item { behavior = cmp.SelectBehavior.Select },
+        --   -- <C-j> for starting completion
+        --   ["<C-Space>"] = cmp.mapping(function()
+        --     if cmp.visible() then
+        --       cmp.select_next_item { behavior = cmp.SelectBehavior.Insert }
+        --     else
+        --       cmp.complete()
+        --     end
+        --   end, { "i", "s" }),
+        --   ["<CR>"] = cmp.mapping {
+        --     i = function(fallback)
+        --       if cmp.visible() and cmp.get_active_entry() then
+        --         cmp.confirm { behavior = cmp.ConfirmBehavior.Replace, select = false }
+        --       else
+        --         fallback()
+        --       end
+        --     end,
+        --     s = cmp.mapping.confirm { select = true },
+        --     c = cmp.mapping.confirm { behavior = cmp.ConfirmBehavior.Replace, select = true },
+        --   },
+        -- },
         experimental = {
           ghost_text = true,
         },
-        performance = {
-          debounce = 300,
-          throttle = 120,
-          fetching_timeout = 100,
-        },
+        -- performance = {
+        --   debounce = 300,
+        --   throttle = 120,
+        --   fetching_timeout = 100,
+        -- },
       })
     end,
   },
