@@ -8,7 +8,10 @@ return {
   },
   cmd = { "Octo" },
   opts = {
-    use_diagnostic_signs = true,
+    default_remote = {"upstream", "origin"},
+    ui = {
+      use_signcolumn = true
+    }
   },
   keys = {
     { prefix,          desc = "Octo" },
