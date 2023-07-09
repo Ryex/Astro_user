@@ -69,26 +69,6 @@ end
 return {
   -- first key is the mode
   [""] = { -- normal and visual mode
-    ["f"] = {
-      function() require("hop").hint_words { current_line_only = true } end,
-      desc = "Hop words on current line",
-    },
-    ["F"] = {
-      function() require("hop").hint_words { current_line_only = false } end,
-      desc = "Hop words",
-    },
-    ["t"] = {
-      function() require("hop").hint_char2 { current_line_only = true } end,
-      desc = "Hop characters on current line",
-    },
-    ["T"] = {
-      function() require("hop").hint_char2 { current_line_only = false } end,
-      desc = "Hop characters",
-    },
-    [";"] = {
-      function() require("hop").hint_lines_skip_whitespace() end,
-      desc = "Hop lines start",
-    },
     ["?"] = {
       function() require("hop").hint_patterns() end,
       desc = "Hop patterns",
@@ -124,21 +104,9 @@ return {
       function() _G.dapRunConfigWithArgs() end,
       desc = "Start a dap config with argument",
     },
-    ["<leader>fS"] = { '<cmd>lua require("spectre").open()<CR>', desc = "Open Spectre" },
-    ["<leader>sw"] = {
-      '<cmd>lua require("spectre").open_visual({select_word=true})<CR>',
-      desc = "Search current word",
-    },
-    ["<leader>sp"] = {
-      '<cmd>lua require("spectre").open_file_search({select_word=true})<CR>',
-      desc = "Search on current file",
-    },
   },
   t = {
     -- setting a mapping to false will disable it
     -- ["<esc>"] = false,
-  },
-  v = {
-    ["<leader>sw"] = { '<esc><cmd>lua require("spectre").open_visual()<CR>', desc = "Search current word" },
   },
 }

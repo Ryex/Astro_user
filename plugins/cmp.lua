@@ -117,33 +117,4 @@ return {
       })
     end,
   },
-  {
-    "Saecki/crates.nvim",
-    init = function()
-      vim.api.nvim_create_autocmd("BufRead", {
-        group = vim.api.nvim_create_augroup("CmpSourceCargo", { clear = true }),
-        pattern = "Cargo.toml",
-        callback = function()
-          require("cmp").setup.buffer { sources = { { name = "crates" } } }
-          require "crates"
-        end,
-      })
-    end,
-    config = function()
-      require("crates").setup {
-        null_ls = {
-          enabled = true,
-          name = "crates.nvim",
-        },
-      }
-
-      -- Crates mappings:
-      local map = vim.api.nvim_set_keymap
-      map("n", "<leader>Ct", ":lua require('crates').toggle()<cr>", { desc = "Toggle extra crates.io information" })
-      map("n", "<leader>Cr", ":lua require('crates').reload()<cr>", { desc = "Reload information from crates.io" })
-      map("n", "<leader>CU", ":lua require('crates').upgrade_crate()<cr>", { desc = "Upgrade a create" })
-      map("v", "<leader>CU", ":lua require('crates').upgrade_crates()<cr>", { desc = "Upgrade selected crates" })
-      map("n", "<leader>CA", ":lua require('crates').upgrade_all_crates()<cr>", { desc = "Upgrade all crates" })
-    end,
-  },
 }

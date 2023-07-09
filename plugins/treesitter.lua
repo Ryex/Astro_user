@@ -232,9 +232,4 @@ return {
       }
     end,
   },
-  {
-    "bennypowers/nvim-regexplainer",
-    opts = {},
-    ft = { "html", "javascript", "javascriptreact", "typescript", "typescriptreact", "python", "rust", "lua", "ruby" },
-  },
 }
