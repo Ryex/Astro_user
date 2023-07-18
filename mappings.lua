@@ -104,9 +104,6 @@ return {
       function() _G.dapRunConfigWithArgs() end,
       desc = "Start a dap config with argument",
     },
-    ["<leader>Sp"] = {
-      "<cmd>Telescope projects<cr>", desc = "Telescope Projects"
-    },
   },
   t = {
     -- setting a mapping to false will disable it

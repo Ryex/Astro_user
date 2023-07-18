@@ -103,4 +103,30 @@ return {
     opts = {},
     keys = { { "<leader>lv", "<cmd>:VenvSelect<cr>", desc = "Select VirtualEnv" } },
   },
+  {
+    "charludo/projectmgr.nvim",
+    -- event = "VeryLazy",
+    lazy = false,
+    keys = {
+      { "<leader>P", "<cmd>ProjectMgr<cr>", desc = "Open ProjectMgr panel" },
+    },
+    config = function ()
+      require('projectmgr').setup({
+        {
+          autogit = {
+            enabled = false,
+            command = "git pull --ff-only",
+          },
+          reopen = false,
+          session = { enabled = true, file = "Session.vim" },
+          shada = { enabled = false, file = "main.shada" },
+          scripts = {
+            enabled = true,
+            file_startup = "startup.sh",
+            file_shutdown = "shutdown.sh",
+          },
+        }
+      })
+    end,
+  },
 }

@@ -59,7 +59,7 @@ return {
       local utils = require "astronvim.utils"
       local button = utils.alpha_button
       opts.section.buttons.val = utils.extend_tbl(opts.section.buttons.val, {
-        button("LDR S p", "   Projects   "),
+        button("LDR P", "   Projects   "),
       })
       return opts
     end,

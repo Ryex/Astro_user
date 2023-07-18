@@ -39,7 +39,7 @@ return {
   { import = "astrocommunity.debugging.persistent-breakpoints-nvim" },
   -- project
   { import = "astrocommunity.project.nvim-spectre" },
-  { import = "astrocommunity.project.project-nvim" },
+  -- { import = "astrocommunity.project.projectmgr-nvim" }, -- seesm to be mis configured
    -- git
   { import = "astrocommunity.git.octo-nvim" },
   { import = "astrocommunity.git.git-blame-nvim" },
@@ -74,11 +74,9 @@ return {
   { import  = "astrocommunity.motion.nvim-surround" },
   { import = "astrocommunity.motion.vim-matchup" },
   -- scrolling
-  { import = "astrocommunity.scrolling.cinnamon-nvim" },
+  -- { import = "astrocommunity.scrolling.cinnamon-nvim" },
   { import = "astrocommunity.scrolling.nvim-scrollbar" },
   -- utility
-  -- { import = "astrocommunity.utility.noice-nvim"},
-
-
+  { import = "astrocommunity.utility.noice-nvim"},
   -- { import = "astrocommunity.completion.copilot-lua-cmp" },
 }
