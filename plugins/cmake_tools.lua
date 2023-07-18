@@ -2,19 +2,10 @@ local utils = require "astronvim.utils"
 return {
   {
     "Civitasv/cmake-tools.nvim",
-    ft = { "c", "cpp", "objc", "objcpp", "cuda", "proto" },
-    dependencies = {
-      {
-        "jay-babu/mason-nvim-dap.nvim",
-        opts = function(_, opts) opts.ensure_installed = utils.list_insert_unique(opts.ensure_installed, "codelldb") end,
-      },
-    },
-    opts = {},
     keys = {
-      { "<leader>B", desc = "Build commands" },
-      { "<leader>Bc", desc = "CMake commands" },
+      { "<leader>Bc", name = "CMake commands" },
       { "<leader>Bcg", "<cmd>CMakeGenerate<cr>", desc = "Generate CMake config" },
-      { "<leader>Bcb", "<cme>CMakeBuild<cr>", desc = "CMake Build" },
+      { "<leader>Bcb", "<cmd>CMakeBuild<cr>", desc = "CMake Build" },
       { "<leader>Bci", "<cmd>CMakeInstall<cr>", desc = "CMake install" },
       { "<leader>Bcr", "<cmd>CMakeRun<cr>", desc = "CMake Run" },
       { "<leader>Bcd", "<cmd>CMakeDebug<cr>", desc = "CMake Debug" },

@@ -75,6 +75,7 @@ return {
     },
   },
   n = {
+    ["<leader>B"] = { name = "Build commands" },
     ["<leader>c"] = {
       function()
         local bufs = vim.fn.getbufinfo { buflisted = true }
