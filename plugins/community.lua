@@ -61,7 +61,6 @@ return {
   { import = "astrocommunity.color.headlines-nvim" },
   { import = "astrocommunity.color.vim-highlighter" },
   -- bars and lines
-  { import = "astrocommunity.bars-and-lines.heirline-mode-text-statusline" },
   { import = "astrocommunity.bars-and-lines.heirline-vscode-winbar" },
   -- indent
   { import = "astrocommunity.indent.indent-blankline-nvim" },
