@@ -3,10 +3,6 @@ return {
     "nvim-treesitter/nvim-treesitter",
     dependencies = {
       "nvim-treesitter/nvim-treesitter-textobjects",
-      {
-        "andymass/vim-matchup",
-        init = function() vim.g.matchup_matchparen_deferred = 1 end,
-      },
     },
     opts = {
       auto_install = vim.fn.executable "tree-sitter" == 1,
@@ -185,7 +181,6 @@ return {
   --     vim.keymap.set("x", "<A-k>", "<cmd>STSSwapPrevVisual<cr>", opts)
   --   end,
   -- },
-  { "nvim-treesitter/nvim-treesitter-textobjects", after = "nvim-treesitter" },
   {
     "LhKipp/nvim-nu",
     lazy = false,
