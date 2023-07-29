@@ -73,9 +73,21 @@ return {
       function() require("hop").hint_patterns() end,
       desc = "Hop patterns",
     },
+    -- Highlighter
+    -- These are basing keymaps to guide new users
+    ["f"] = { name = "Highlighter" },
+    ["t"] = { name = "Positional Highlighter" },
   },
   n = {
+    -- Groups
+    ["<leader>b"] = { name = "Buffers" },
     ["<leader>B"] = { name = "Build commands" },
+    ["<leader>Bc"] = { name = "Cmake" },
+    ["<leader>Br"] = { name = "Rust" },
+    ["]n"] = { name = "Search highlights next" },
+    ["[n"] = { name = "Search highlights previous" },
+    -- normal bindings
+    -- close buffer
     ["<leader>c"] = {
       function()
         local bufs = vim.fn.getbufinfo { buflisted = true }
@@ -84,7 +96,6 @@ return {
       end,
       desc = "Close buffer",
     },
-    -- second key is the lefthand side of the map
     -- mappings seen under group name "Buffer"
     ["<leader>bn"] = { "<cmd>tabnew<cr>", desc = "New tab" },
     ["<leader>bD"] = {
@@ -96,9 +107,6 @@ return {
       desc = "Pick to close",
     },
     ["<leader>lF"] = { "<cmd>FormatModification<cr>", desc = " Format file modifications (via VCS diff) " },
-    -- tables with the `name` key will be registered with which-key if it's installed
-    -- this is useful for naming menus
-    ["<leader>b"] = { name = "Buffers" },
     -- quick save
     -- ["<C-s>"] = { ":w!<cr>", desc = "Save File" },  -- change description but the same command
     ["<leader>dA"] = {

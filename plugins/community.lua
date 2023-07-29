@@ -59,7 +59,7 @@ return {
   -- color
   { import = "astrocommunity.color.modes-nvim" },
   { import = "astrocommunity.color.headlines-nvim" },
-  { import = "astrocommunity.color.vim-highlighter" },
+  -- { import = "astrocommunity.color.vim-highlighter" },
   -- bars and lines
   { import = "astrocommunity.bars-and-lines.heirline-vscode-winbar" },
   -- indent
