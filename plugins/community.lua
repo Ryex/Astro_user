@@ -29,7 +29,7 @@ return {
   -- language support
   { import = "astrocommunity.programming-language-support.csv-vim" },
   { import = "astrocommunity.programming-language-support.nvim-jqx" },
-  { import = "astrocommunity.programming-language-support.rest-nvim" },
+  
   -- diagnostics
   { import = "astrocommunity.diagnostics.lsp_lines-nvim" },
   { import = "astrocommunity.diagnostics.trouble-nvim" },
@@ -59,7 +59,6 @@ return {
   -- color
   { import = "astrocommunity.color.modes-nvim" },
   { import = "astrocommunity.color.headlines-nvim" },
-  -- { import = "astrocommunity.color.vim-highlighter" },
   -- bars and lines
   { import = "astrocommunity.bars-and-lines.heirline-vscode-winbar" },
   -- indent

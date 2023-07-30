@@ -75,8 +75,6 @@ return {
     },
     -- Highlighter
     -- These are basing keymaps to guide new users
-    ["f"] = { name = "Highlighter" },
-    ["t"] = { name = "Positional Highlighter" },
   },
   n = {
     -- Groups
