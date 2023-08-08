@@ -5,7 +5,9 @@ return {
     "Civitasv/cmake-tools.nvim",
     keys = {
       { "<leader>Bcg", "<cmd>CMakeGenerate<cr>", desc = "Generate CMake config" },
+      { "<leader>BcG", "<cmd>CMakeGenerate!<cr>", desc = "Generate clean CMake config" },
       { "<leader>Bcb", "<cmd>CMakeBuild<cr>", desc = "CMake Build" },
+      { "<leader>BcB", "<cmd>CMakeBuild!<cr>", desc = "CMake Clean Build" },
       { "<leader>Bci", "<cmd>CMakeInstall<cr>", desc = "CMake install" },
       { "<leader>Bcr", "<cmd>CMakeRun<cr>", desc = "CMake Run" },
       { "<leader>Bcd", "<cmd>CMakeDebug<cr>", desc = "CMake Debug" },

@@ -72,7 +72,7 @@ return {
           session = { enabled = true, file = "Session.vim" },
           shada = { enabled = false, file = "main.shada" },
           scripts = {
-            enabled = true,
+            enabled = false,
             file_startup = "startup.sh",
             file_shutdown = "shutdown.sh",
           },
