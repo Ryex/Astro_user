@@ -23,5 +23,15 @@ return function(client, bufnr)
   -- setup clangd source header switch
   if client.name == "clangd" then
     vim.keymap.set("n", "gH", "<cmd>ClangdSwitchSourceHeader<cr>", { desc = "Switch between source and header files" })
+    if vim.fn.has "nvim-0.10" ~= 1 then
+      require("clangd_extensions.inlay_hints").setup_autocmd()
+      require("clangd_extensions.inlay_hints").set_inlay_hints()
+
+      require("astronvim.utils").set_mappings({
+        n = {
+          ["<leader>uH"] = { "<cmd>ClangdToggleInlayHints<cr>", desc = "Toggle inlay hints (clangd)" },
+        },
+      }, { buffer = args.buf })
+    end
   end
 end

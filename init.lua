@@ -38,9 +38,7 @@ if vim.fn.has "win32" == 1 then
           and name ~= "CommandPromptType"
         then
           local old_env = vim.fn.getenv(name)
-          if old_env ~= value then
-            dev_env[name] = value
-          end
+          if old_env ~= value then dev_env[name] = value end
         end
       end
     end
@@ -55,11 +53,8 @@ if vim.fn.has "win32" == 1 then
       vim.env[key] = value
       -- vim.notify("Set ENV: " .. key .. " = " .. vim.env[key])
     end
-
   end
-
 end
-
 
 if vim.g.neovide then
   -- Neovide GUI settings
@@ -131,7 +126,6 @@ if vim.g.neovide then
   -- END Neovide GUI settings
 end
 
-
 return {
   -- Configure AstroNvim updates
   updater = {
@@ -175,11 +169,19 @@ return {
       },
     },
   },
+  options = {
+    g = {
+      inlay_hints_enabled = true,
+      diagnostics_mode = 2,
+    },
+  },
   -- This function is run last and is a good place to configuring
   -- augroups/autocommands and custom filetypes also this just pure lua so
   -- anything that doesn't fit in the normal config locations above can go here
   polish = function()
     vim.g.editorconfig = true
+    vim.g.inlay_hints_enabled = true
+    vim.g.diagnostics_mode = 2
     -- Set up custom filetypes
     -- vim.filetype.add {
     --   extension = {

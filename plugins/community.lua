@@ -7,7 +7,7 @@ return {
   -- { import = "astrocommunity.colorscheme.catppuccin" },
   -- packs
   { import = "astrocommunity.pack.cmake" },
-  { import = "astrocommunity.pack.cpp" },
+  -- { import = "astrocommunity.pack.cpp" },
   { import = "astrocommunity.pack.rust" },
   { import = "astrocommunity.pack.lua" },
   { import = "astrocommunity.pack.python" },
@@ -65,7 +65,7 @@ return {
   { import = "astrocommunity.indent.indent-blankline-nvim" },
   { import = "astrocommunity.indent.mini-indentscope" },
   -- lsp
-  { import = "astrocommunity.lsp.lsp-inlayhints-nvim" },
+  -- { import = "astrocommunity.lsp.lsp-inlayhints-nvim" },
   { import = "astrocommunity.lsp.inc-rename-nvim" },
   -- motion
   { import = "astrocommunity.motion.hop-nvim" },
