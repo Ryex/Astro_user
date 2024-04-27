@@ -1,4 +1,4 @@
-if true then return {} end -- WARN: REMOVE THIS LINE TO ACTIVATE THIS FILE
+-- if true then return {} end -- WARN: REMOVE THIS LINE TO ACTIVATE THIS FILE
 
 -- Customize Mason plugins
 
@@ -12,8 +12,11 @@ return {
       -- add more things to the ensure_installed table protecting against community packs modifying it
       opts.ensure_installed = require("astrocore").list_insert_unique(opts.ensure_installed, {
         "lua_ls",
+        "basedpyright",
         -- add more arguments for adding more language servers
       })
+      -- drop non based pyright
+      opts.ensure_installed = vim.tbl_filter(function(server) return server ~= "pyright" end, opts.ensure_installed)
     end,
   },
   -- use mason-null-ls to configure Formatters/Linter installation for null-ls sources
@@ -38,6 +41,13 @@ return {
         "python",
         -- add more arguments for adding more debuggers
       })
+    end,
+  },
+  {
+    "WhoIsSethDaniel/mason-tool-installer.nvim",
+    optional = true,
+    opts = function(_, opts)
+      opts.ensure_installed = vim.tbl_filter(function(server) return server ~= "pyright" end, opts.ensure_installed)
     end,
   },
 }
